@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-test-i18n';
+  constructor(private translocoService: TranslocoService) {}
+
+  changeLanguage(): void {
+    this.translocoService.setActiveLang(this.translocoService.getActiveLang() === 'es' ? 'en' : 'es');
+  }
 }
